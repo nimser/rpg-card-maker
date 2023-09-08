@@ -22,19 +22,10 @@ describe("GaugeUnit.cy.tsx", () => {
       "rgba(0, 0, 0, 0)"
     )
   })
-  it("switches value when clicked upon (multiple times)", () => {
-    cy.mount(<GaugeUnit />)
+  it("Should call provided onClick method", () => {
+    const onClickSpy = cy.spy().as("onClickSpy")
+    cy.mount(<GaugeUnit onClick={onClickSpy} />)
     cy.getByData("gauge-unit").click()
-    cy.getByData("gauge-unit").should(
-      "not.have.css",
-      "background-color",
-      "rgba(0, 0, 0, 0)"
-    )
-    cy.getByData("gauge-unit").click()
-    cy.getByData("gauge-unit").should(
-      "have.css",
-      "background-color",
-      "rgba(0, 0, 0, 0)"
-    )
+    cy.get("@onClickSpy").should("have.been.called")
   })
 })

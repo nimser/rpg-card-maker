@@ -1,17 +1,16 @@
-import { useState } from "react"
 import styles from "./GaugeUnit.module.css"
 
 interface GaugeUnitProps {
   set?: boolean
+  onClick?: () => void
 }
 
-const GaugeUnit = ({ set }: GaugeUnitProps) => {
-  const [isSet, setIsSet] = useState(set)
+const GaugeUnit = ({ set, onClick }: GaugeUnitProps) => {
   return (
     <div
-      className={isSet ? styles.set : styles.unset}
+      className={set ? styles.set : styles.unset}
       data-test="gauge-unit"
-      onClick={() => setIsSet((old) => !old)}
+      onClick={onClick}
     ></div>
   )
 }
