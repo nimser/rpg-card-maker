@@ -1,0 +1,15 @@
+.set,
+.unset {
+  width: 30px;
+  height: 10px;
+  border-radius: 5px;
+  border: 1px solid purple;
+}
+
+.set {
+  background-color: purple;
+}
+
+.unset {
+  background-color: transparent;
+}
