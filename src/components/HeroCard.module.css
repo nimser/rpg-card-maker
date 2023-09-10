@@ -5,8 +5,8 @@
 
 .card {
   position: relative;
-  width: 200px;
-  height: 300px;
+  width: 120px;
+  height: 180px;
   border-radius: 20px;
   cursor: pointer;
   overflow: clip;
@@ -35,10 +35,11 @@
 }
 .specs {
   display: flex;
-  gap: 20px;
-  font-size: 1.8em;
+  gap: 12px;
+  font-size: 1.2em;
 }
 
 .name {
   margin: 0;
+  font-size: 1.5em;
 }

@@ -1,0 +1,30 @@
+.app {
+  max-width: 550px;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input {
+  width: 5rem;
+  font-size: 1.5rem;
+  padding: 10px 0; /* Adjust padding as needed */
+  border: none;
+  border-bottom: 2px solid black; /* Define the line color and style */
+  background-color: transparent;
+  outline: none; /* Remove the default focus outline */
+  transition: border-color 0.3s ease; /* Add a transition effect for the line */
+}
+
+/* Style for the input field when focused */
+.input:focus {
+  border-color: purple; /* Change the line color on focus */
+}
+
+.specs > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

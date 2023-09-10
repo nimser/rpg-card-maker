@@ -1,13 +1,17 @@
 import styles from "./HeroCard.module.css"
 
-interface HeroProps {
+type AtLeast<T, K extends keyof T> = Partial<T> & Pick<T, K>
+
+export interface Hero {
   image: string
-  selected?: boolean
   name?: string
-  strength?: number
-  endurance?: number
-  charism?: number
+  strength: number
+  endurance: number
+  charism: number
 }
+
+type HeroWithOptionalSpecs = AtLeast<Hero, "image">
+type HeroProps = HeroWithOptionalSpecs & { selected?: boolean }
 
 const HeroCard = ({
   image,

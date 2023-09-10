@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./Gauge.module.css"
 import GaugeUnit from "./GaugeUnit"
 
@@ -7,10 +7,14 @@ interface GaugeProps {
 }
 
 const Gauge = ({ initValue }: GaugeProps) => {
-  const [value, setValue] = useState(initValue || 0)
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    initValue && setValue(initValue)
+  }, [initValue])
 
   return (
-    <div className={styles.gauge} data-test="gauge">
+    <div className={styles.gauge} data-test="gauge" data-gauge-value={value}>
       {Array.from(Array(5)).map((_, i) => (
         <GaugeUnit
           key={i}
