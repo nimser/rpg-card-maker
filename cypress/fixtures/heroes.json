@@ -1,0 +1,20 @@
+[
+  {
+    "image": "/hat-man.webp",
+    "strength": 4,
+    "endurance": 3,
+    "charism": 3
+  },
+  {
+    "image": "/plant-man.webp",
+    "strength": 5,
+    "endurance": 4,
+    "charism": 1
+  },
+  {
+    "image": "/blond-lady.webp",
+    "strength": 2,
+    "endurance": 3,
+    "charism": 5
+  }
+]
