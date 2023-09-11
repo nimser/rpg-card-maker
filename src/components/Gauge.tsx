@@ -3,15 +3,14 @@ import styles from "./Gauge.module.css"
 import GaugeUnit from "./GaugeUnit"
 
 interface GaugeProps {
-  initValue?: number
+  value: number
+  setValue: (targetValue: number) => void
 }
 
-const Gauge = ({ initValue }: GaugeProps) => {
-  const [value, setValue] = useState(0)
-
-  useEffect(() => {
-    initValue && setValue(initValue)
-  }, [initValue])
+const Gauge = ({ value, setValue }: GaugeProps) => {
+  const handleClick = (targetValue: number) => {
+    setValue(targetValue)
+  }
 
   return (
     <div className={styles.gauge} data-test="gauge" data-gauge-value={value}>
@@ -19,7 +18,7 @@ const Gauge = ({ initValue }: GaugeProps) => {
         <GaugeUnit
           key={i}
           set={i + 1 <= value}
-          onClick={() => setValue(i + 1)}
+          onClick={handleClick.bind(null, i + 1)}
         />
       ))}
     </div>

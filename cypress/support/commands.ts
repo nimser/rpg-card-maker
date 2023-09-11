@@ -12,11 +12,45 @@
 declare namespace Cypress {
   interface Chainable {
     getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
+    setStrengthTo(strengthValue: number): Chainable<JQuery<HTMLElement>>
+    setEnduranceTo(enduranceValue: number): Chainable<JQuery<HTMLElement>>
+    setCharismTo(charismValue: number): Chainable<JQuery<HTMLElement>>
   }
 }
 Cypress.Commands.add("getByData", (selector) => {
   return cy.get(`[data-test=${selector}]`)
 })
+
+Cypress.Commands.add("setStrengthTo", (value) => {
+  cy.getByData("gauge")
+    .eq(0)
+    .within(() => {
+      cy.getByData("gauge-unit")
+        .eq(value - 1)
+        .click()
+    })
+})
+
+Cypress.Commands.add("setEnduranceTo", (value) => {
+  cy.getByData("gauge")
+    .eq(1)
+    .within(() => {
+      cy.getByData("gauge-unit")
+        .eq(value - 1)
+        .click()
+    })
+})
+
+Cypress.Commands.add("setCharismTo", (value) => {
+  cy.getByData("gauge")
+    .eq(1)
+    .within(() => {
+      cy.getByData("gauge-unit")
+        .eq(value - 1)
+        .click()
+    })
+})
+
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
