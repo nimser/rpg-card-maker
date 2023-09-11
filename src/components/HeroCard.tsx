@@ -11,7 +11,10 @@ export interface Hero {
 }
 
 type HeroWithOptionalSpecs = AtLeast<Hero, "image">
-type HeroProps = HeroWithOptionalSpecs & { selected?: boolean }
+type HeroProps = HeroWithOptionalSpecs & {
+  selected?: boolean
+  fullFormat?: boolean
+}
 
 const HeroCard = ({
   image,
@@ -20,11 +23,14 @@ const HeroCard = ({
   strength,
   endurance,
   charism,
+  fullFormat,
 }: HeroProps) => {
   const hasOverlay = !!(name || strength || endurance || charism)
   return (
     <div
-      className={`${styles.card} ${selected ? styles.selected : undefined}`}
+      className={`${styles.card} ${selected ? styles.selected : ""} ${
+        fullFormat ? styles.fullFormat : ""
+      }`}
       data-test="hero-card"
     >
       <img className={styles.image} src={image} alt="" data-test="hero-image" />

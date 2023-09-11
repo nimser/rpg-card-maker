@@ -4,7 +4,7 @@ beforeEach(() => {
 it("Loads the page", () => {
   cy.getByData("title").should("have.text", "RPG Hero Generator")
 })
-xit("Creates a character then shows a card with its specs", () => {
+it("Creates a character then shows a card with its specs", () => {
   // 1. Type name
   cy.getByData("hero-name").type("Zwarg")
   // 2. Select Hero
@@ -13,4 +13,5 @@ xit("Creates a character then shows a card with its specs", () => {
   cy.setStrengthTo(3)
   cy.setEnduranceTo(4)
   // 4. Hit start and check card is generated
+  cy.getByData("submit").click()
 })

@@ -3,13 +3,14 @@ import styles from "./App.module.css"
 import Gauge from "./components/Gauge"
 import HeroSelector from "./components/HeroSelector"
 import heroes from "../cypress/fixtures/heroes.json"
-import { Hero } from "./components/HeroCard"
+import HeroCard, { Hero } from "./components/HeroCard"
 import BonusCounter from "./components/BonusCounter"
 
 function App() {
   const [name, setName] = useState("")
   const [selectedHero, setSelectedHero] = useState<Hero | null>(null)
   const [remainingBonusPoints, setRemainingBonusPoints] = useState(2)
+  const [started, setStarted] = useState(false)
 
   const selectHero = (hero: Hero) => {
     setRemainingBonusPoints(2)
@@ -34,6 +35,19 @@ function App() {
       setRemainingBonusPoints((old) => old - difference)
     }
   }
+
+  if (started && selectedHero)
+    return (
+      <HeroCard
+        image={selectedHero.image}
+        name={name}
+        strength={selectedHero?.strength}
+        endurance={selectedHero.endurance}
+        charism={selectedHero.charism}
+        selected={true}
+        fullFormat={true}
+      />
+    )
 
   return (
     <main className={styles.app}>
@@ -86,7 +100,13 @@ function App() {
               />
             </div>
           </div>
-          <button className={styles.submit}>Start !</button>
+          <button
+            className={styles.submit}
+            onClick={setStarted.bind(null, true)}
+            data-test="submit"
+          >
+            Start !
+          </button>
         </>
       )}
     </main>
