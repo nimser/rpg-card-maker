@@ -4,6 +4,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -23,8 +24,24 @@
   border-color: purple; /* Change the line color on focus */
 }
 
+.specs {
+  align-self: stretch;
+}
+
 .specs > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.submit {
+  background-color: purple;
+  width: 50%;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-weight: bold;
+  cursor: pointer;
 }

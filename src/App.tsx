@@ -86,6 +86,7 @@ function App() {
               />
             </div>
           </div>
+          <button className={styles.submit}>Start !</button>
         </>
       )}
     </main>
